@@ -8,32 +8,59 @@
 </head>
 <body>
   <div id="app">
-    <header>
-      <h1>TD Merge Prototype</h1>
-      <div class="controls">
-        <button id="startBtn">Start</button>
-        <button id="pauseBtn">Pause</button>
-        <button id="resetBtn">Reset</button>
-        <span id="hearts"></span>
-        <span id="wave"></span>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Co-op inspired lane defense</p>
+        <h1>TD Merge Prototype</h1>
+        <p class="tagline">Draft lines, evolve towers, and hold the path against invading heroes.</p>
+      </div>
+      <div class="chips">
+        <div class="chip" id="hearts"></div>
+        <div class="chip" id="wave"></div>
+        <div class="chip" id="coins"></div>
       </div>
     </header>
     <main>
       <section class="sidebar">
-        <h2>Build</h2>
-        <label for="lineSelect">Line</label>
-        <select id="lineSelect"></select>
-        <div id="selectionInfo" class="info"></div>
-        <button id="upgradeBtn" disabled>Upgrade Selected</button>
-        <div class="legend">
-          <div><span class="legend-box path"></span> Enemy path</div>
-          <div><span class="legend-box attack"></span> Attack window</div>
-          <div><span class="legend-box build"></span> Buildable tile</div>
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Line Draft</p>
+              <h2>Build & Merge</h2>
+            </div>
+            <div class="pill pill-info">Tier 1–5</div>
+          </div>
+          <label for="lineSelect">Select a starting line</label>
+          <select id="lineSelect"></select>
+          <div id="selectionInfo" class="info"></div>
+          <button id="upgradeBtn" class="primary" disabled>Upgrade Selected</button>
+          <div id="statusMessage" class="status"></div>
+          <div class="legend">
+            <div><span class="legend-box path"></span> Enemy path</div>
+            <div><span class="legend-box attack"></span> Attack window</div>
+            <div><span class="legend-box build"></span> Buildable tile</div>
+          </div>
+          <p class="hint">Place a Tier 1 unit on a build tile, then select it to evolve toward its final god.</p>
+          <p class="hint">Earn coins for each kill. Pay to place or upgrade, or merge two identical towers to ascend for free.</p>
         </div>
-        <p class="hint">Click a buildable tile to place the selected tier-1 unit. Select a tower to upgrade it.</p>
+
+        <div class="panel controls">
+          <div class="panel-head">
+            <h3>Run Control</h3>
+          </div>
+          <div class="button-row">
+            <button id="startBtn" class="primary">Start</button>
+            <button id="pauseBtn" class="ghost">Pause</button>
+            <button id="resetBtn" class="ghost">Reset</button>
+          </div>
+          <p class="hint">Start a wave, pause to plan upgrades, or reset the battlefield to iterate quickly.</p>
+        </div>
       </section>
       <section class="playfield">
-        <canvas id="game" width="800" height="500"></canvas>
+        <div class="canvas-frame">
+          <div class="grid-hint">Drag your eyes to the build pads, then funnel invaders through the glowing path.</div>
+          <canvas id="game" width="800" height="500"></canvas>
+        </div>
       </section>
     </main>
   </div>

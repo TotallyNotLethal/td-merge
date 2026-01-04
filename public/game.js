@@ -12,9 +12,11 @@ const selectionInfo = document.getElementById('selectionInfo');
 const upgradeBtn = document.getElementById('upgradeBtn');
 const heartsLabel = document.getElementById('hearts');
 const waveLabel = document.getElementById('wave');
+const coinsLabel = document.getElementById('coins');
 const startBtn = document.getElementById('startBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const resetBtn = document.getElementById('resetBtn');
+const statusMessage = document.getElementById('statusMessage');
 
 let tierData;
 let battlefield;
@@ -28,6 +30,28 @@ let hearts = 5;
 let spawnTimer = 0;
 let wave = 1;
 let selectedTower = null;
+let coins = 0;
+
+const BASE_PLACEMENT_COST = 10;
+const UPGRADE_BASE_COST = 12;
+const UPGRADE_SCALE = 6;
+const MIN_BOUNTY = 2;
+
+const COLORS = {
+  grid: '#1a2033',
+  path: '#f7b94d',
+  attackWindow: '#8ce0ff',
+  escape: '#f97316',
+  buildableFill: 'rgba(122,223,138,0.22)',
+  buildableStroke: '#7adf8a',
+  enemy: '#ff6b6b',
+  enemyStroke: '#1f0f20',
+  towerBody: '#a78bfa',
+  towerCore: '#0b0f1a',
+  selection: '#fbbf24',
+  hearts: '#f472b6',
+  wave: '#facc15',
+};
 
 const stateDefaults = () => ({
   towers: [],
@@ -36,6 +60,7 @@ const stateDefaults = () => ({
   wave: 1,
   hearts: 5,
   selectedTower: null,
+  coins: 20,
 });
 
 async function init() {
@@ -61,7 +86,9 @@ function resetState() {
   wave = defaults.wave;
   hearts = defaults.hearts;
   selectedTower = defaults.selectedTower;
+  coins = defaults.coins;
   running = false;
+  setStatus('');
   updateLabels();
   render();
 }
@@ -72,8 +99,17 @@ function attachUIHandlers() {
   resetBtn.addEventListener('click', resetState);
   upgradeBtn.addEventListener('click', () => {
     if (selectedTower) {
+      const cost = getUpgradeCost(selectedTower);
+      if (!selectedTower.canUpgrade()) return;
+      if (coins < cost) {
+        setStatus(`Need ${cost} coins to upgrade (have ${coins}).`, 'warn');
+        return;
+      }
+      coins -= cost;
       selectedTower.upgrade();
+      setStatus(`Upgraded to Tier ${selectedTower.currentEntity().tier}.`, 'success');
       updateSelectionInfo(selectedTower);
+      updateLabels();
     }
   });
 
@@ -83,9 +119,14 @@ function attachUIHandlers() {
     const y = Math.floor(((event.clientY - rect.top) / rect.height) * battlefield.gridHeight);
     const clickedTower = towers.find((t) => t.tile.x === x && t.tile.y === y);
     if (clickedTower) {
+      if (selectedTower && selectedTower !== clickedTower && selectedTower.canMergeWith(clickedTower)) {
+        mergeTowers(selectedTower, clickedTower);
+        return;
+      }
       selectedTower = clickedTower;
       updateSelectionInfo(clickedTower);
-      upgradeBtn.disabled = !clickedTower.canUpgrade();
+      upgradeBtn.disabled = !clickedTower.canUpgrade() || coins < getUpgradeCost(clickedTower);
+      setStatus('');
       return;
     }
     const tile = buildableTiles.find((t) => t.x === x && t.y === y);
@@ -110,18 +151,22 @@ function updateSelectionInfo(tower) {
   if (tower) {
     const current = tower.currentEntity();
     const next = tower.nextEntity();
+    const upgradeCost = tower.canUpgrade() ? getUpgradeCost(tower) : null;
     selectionInfo.innerHTML = `
       <div><strong>${current.name}</strong> (Tier ${current.tier})</div>
       <div>Range ${current.stats.range.toFixed(1)}, Power ${current.stats.attackPower}, Speed ${current.stats.attackSpeed}</div>
       ${next ? `<div>Next: ${next.name} (Tier ${next.tier})</div>` : '<div>Max tier reached</div>'}
+      ${upgradeCost ? `<div>Upgrade Cost: ${upgradeCost} coins</div>` : ''}
     `;
-    upgradeBtn.disabled = !tower.canUpgrade();
+    upgradeBtn.disabled = !tower.canUpgrade() || coins < getUpgradeCost(tower);
   } else {
     const line = getSelectedLine();
     const base = getLineSequence(line)[0];
+    const placementCost = getPlacementCost(line);
     selectionInfo.innerHTML = `
       <div><strong>${base.name}</strong> (Tier ${base.tier})</div>
       <div>Range ${base.stats.range.toFixed(1)}, Power ${base.stats.attackPower}, Speed ${base.stats.attackSpeed}</div>
+      <div>Cost to deploy: ${placementCost} coins.</div>
       <div>Click a build tile to place this unit.</div>
     `;
     upgradeBtn.disabled = true;
@@ -136,11 +181,19 @@ function getSelectedLine() {
 function placeTower(tile) {
   if (towers.some((t) => t.tile.x === tile.x && t.tile.y === tile.y)) return;
   const line = getSelectedLine();
+  const cost = getPlacementCost(line);
+  if (coins < cost) {
+    setStatus(`Need ${cost} coins to deploy (have ${coins}).`, 'warn');
+    return;
+  }
   const tower = new Tower(line, tile);
   towers.push(tower);
+  coins -= cost;
   selectedTower = tower;
+  setStatus(`Deployed ${tower.currentEntity().name} for ${cost} coins.`, 'success');
   updateSelectionInfo(tower);
-  upgradeBtn.disabled = !tower.canUpgrade();
+  upgradeBtn.disabled = !tower.canUpgrade() || coins < getUpgradeCost(tower);
+  updateLabels();
 }
 
 class Tower {
@@ -162,6 +215,11 @@ class Tower {
 
   canUpgrade() {
     return this.stage < this.sequence.length - 1;
+  }
+
+  canMergeWith(other) {
+    if (!other) return false;
+    return this.canUpgrade() && other.canUpgrade() && this.lineId === other.lineId && this.stage === other.stage;
   }
 
   upgrade() {
@@ -188,6 +246,7 @@ class Enemy {
     this.pathIndex = 0;
     this.progress = 0;
     this.speed = ENEMY_SPEEDS[template.speed] || 1.2;
+    this.bounty = calculateBounty(template);
   }
 
   get currentTile() {
@@ -215,6 +274,18 @@ function getLineSequence(line) {
   return [...tiers, finalGod].map((entry, idx) => ({ ...entry, stage: idx }));
 }
 
+function getPlacementCost() {
+  return BASE_PLACEMENT_COST + Math.floor(towers.length * 0.75);
+}
+
+function getUpgradeCost(tower) {
+  return UPGRADE_BASE_COST + tower.stage * UPGRADE_SCALE;
+}
+
+function calculateBounty(template) {
+  return Math.max(MIN_BOUNTY, template.bounty || Math.round(template.health / 50));
+}
+
 function findTarget(tower) {
   const stats = tower.currentEntity().stats;
   let closest = null;
@@ -240,7 +311,21 @@ function fireAt(tower, enemy) {
   tower.cooldown = 1 / stats.attackSpeed;
   if (enemy.health <= 0) {
     enemies = enemies.filter((e) => e !== enemy);
+    coins += enemy.bounty;
+    updateLabels();
+    if (selectedTower) {
+      upgradeBtn.disabled = !selectedTower.canUpgrade() || coins < getUpgradeCost(selectedTower);
+    }
   }
+}
+
+function mergeTowers(primary, secondary) {
+  primary.upgrade();
+  towers = towers.filter((t) => t !== secondary);
+  selectedTower = primary;
+  setStatus(`Merged into Tier ${primary.currentEntity().tier}.`, 'success');
+  updateSelectionInfo(primary);
+  upgradeBtn.disabled = !primary.canUpgrade() || coins < getUpgradeCost(primary);
 }
 
 function spawnEnemy() {
@@ -294,7 +379,7 @@ function render() {
 }
 
 function drawGrid() {
-  ctx.strokeStyle = '#1f2937';
+  ctx.strokeStyle = COLORS.grid;
   for (let x = 0; x <= battlefield.gridWidth; x++) {
     ctx.beginPath();
     ctx.moveTo(x * TILE_SIZE, 0);
@@ -311,13 +396,13 @@ function drawGrid() {
 
 function drawPath() {
   enemyPath.forEach((tile) => {
-    const color = tile.isAttackWindow ? '#38bdf8' : '#3b82f6';
-    drawTile(tile.x, tile.y, color, tile.isEscape ? '#f97316' : '#0ea5e9');
+    const color = tile.isAttackWindow ? COLORS.attackWindow : COLORS.path;
+    drawTile(tile.x, tile.y, color, tile.isEscape ? COLORS.escape : color);
   });
 }
 
 function drawBuildable() {
-  buildableTiles.forEach((tile) => drawTile(tile.x, tile.y, 'rgba(34,197,94,0.25)', '#22c55e'));
+  buildableTiles.forEach((tile) => drawTile(tile.x, tile.y, COLORS.buildableFill, COLORS.buildableStroke));
 }
 
 function drawTile(x, y, fill, stroke) {
@@ -332,16 +417,13 @@ function drawEnemies() {
   enemies.forEach((enemy) => {
     const tile = enemy.currentTile;
     if (!tile) return;
-    ctx.fillStyle = '#f43f5e';
+    ctx.fillStyle = COLORS.enemy;
+    ctx.strokeStyle = COLORS.enemyStroke;
+    ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.arc(
-      tile.x * TILE_SIZE + TILE_SIZE / 2,
-      tile.y * TILE_SIZE + TILE_SIZE / 2,
-      TILE_SIZE / 4,
-      0,
-      Math.PI * 2
-    );
+    ctx.arc(tile.x * TILE_SIZE + TILE_SIZE / 2, tile.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE / 4, 0, Math.PI * 2);
     ctx.fill();
+    ctx.stroke();
     drawHealthBar(tile.x, tile.y, enemy.health, enemy.template.health);
   });
 }
@@ -351,9 +433,9 @@ function drawHealthBar(x, y, health, max) {
   const height = 6;
   const startX = x * TILE_SIZE + 4;
   const startY = y * TILE_SIZE + TILE_SIZE - 12;
-  ctx.fillStyle = '#1f2937';
+  ctx.fillStyle = '#0f172a';
   ctx.fillRect(startX, startY, width, height);
-  ctx.fillStyle = '#22c55e';
+  ctx.fillStyle = '#34d399';
   const pct = Math.max(0, Math.min(1, health / max));
   ctx.fillRect(startX, startY, width * pct, height);
 }
@@ -362,22 +444,50 @@ function drawTowers() {
   towers.forEach((tower) => {
     const tile = tower.tile;
     const current = tower.currentEntity();
-    ctx.fillStyle = '#c084fc';
-    ctx.fillRect(
-      tile.x * TILE_SIZE + 10,
-      tile.y * TILE_SIZE + 10,
-      TILE_SIZE - 20,
-      TILE_SIZE - 20
-    );
-    ctx.fillStyle = '#0f172a';
-    ctx.font = '12px Arial';
-    ctx.fillText(`T${current.tier}`, tile.x * TILE_SIZE + 14, tile.y * TILE_SIZE + TILE_SIZE / 2);
     if (tower === selectedTower) {
-      ctx.strokeStyle = '#fbbf24';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(tile.x * TILE_SIZE + 4, tile.y * TILE_SIZE + 4, TILE_SIZE - 8, TILE_SIZE - 8);
+      drawRange(tower);
+    }
+    ctx.fillStyle = COLORS.towerBody;
+    ctx.strokeStyle = COLORS.selection;
+    ctx.lineWidth = tower === selectedTower ? 3 : 1.2;
+    ctx.beginPath();
+    ctx.roundRect(tile.x * TILE_SIZE + 10, tile.y * TILE_SIZE + 10, TILE_SIZE - 20, TILE_SIZE - 20, 8);
+    ctx.fill();
+    if (tower === selectedTower) ctx.stroke();
+
+    ctx.fillStyle = COLORS.towerCore;
+    ctx.beginPath();
+    ctx.arc(tile.x * TILE_SIZE + TILE_SIZE / 2, tile.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE / 6, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = '12px "Inter", Arial, sans-serif';
+    ctx.fillText(`T${current.tier}`, tile.x * TILE_SIZE + 14, tile.y * TILE_SIZE + TILE_SIZE / 2 + 4);
+    if (tower === selectedTower) {
+      ctx.strokeStyle = COLORS.selection;
+      ctx.lineWidth = 2.5;
+      ctx.strokeRect(tile.x * TILE_SIZE + 6, tile.y * TILE_SIZE + 6, TILE_SIZE - 12, TILE_SIZE - 12);
     }
   });
+}
+
+function drawRange(tower) {
+  const stats = tower.currentEntity().stats;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(99,102,241,0.35)';
+  ctx.fillStyle = 'rgba(99,102,241,0.08)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(
+    tower.tile.x * TILE_SIZE + TILE_SIZE / 2,
+    tower.tile.y * TILE_SIZE + TILE_SIZE / 2,
+    stats.range * TILE_SIZE,
+    0,
+    Math.PI * 2
+  );
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
 }
 
 function drawStatus() {
@@ -392,8 +502,15 @@ function drawStatus() {
 }
 
 function updateLabels() {
-  heartsLabel.textContent = `Hearts: ${hearts}`;
-  waveLabel.textContent = `Wave: ${wave}`;
+  heartsLabel.innerHTML = `❤️ Hearts: <strong>${Math.max(0, hearts)}</strong>`;
+  waveLabel.innerHTML = `🌊 Wave: <strong>${wave}</strong>`;
+  coinsLabel.innerHTML = `🪙 Coins: <strong>${Math.max(0, Math.floor(coins))}</strong>`;
+}
+
+function setStatus(message, tone = '') {
+  statusMessage.textContent = message;
+  statusMessage.classList.remove('warn', 'success');
+  if (tone) statusMessage.classList.add(tone);
 }
 
 init();
