@@ -1,0 +1,1390 @@
+{
+  "version": "1.0.0",
+  "attackTypes": [
+    {
+      "id": "radiant-beam",
+      "name": "Radiant Beam",
+      "element": "Solar"
+    },
+    {
+      "id": "solar-edge",
+      "name": "Solar Edge",
+      "element": "Solar"
+    },
+    {
+      "id": "solar-barrage",
+      "name": "Solar Barrage",
+      "element": "Solar"
+    },
+    {
+      "id": "coronal-lance",
+      "name": "Coronal Lance",
+      "element": "Solar"
+    },
+    {
+      "id": "stellar-hammer",
+      "name": "Stellar Hammer",
+      "element": "Solar"
+    },
+    {
+      "id": "dawn-fleet-barrage",
+      "name": "Dawn Fleet Barrage",
+      "element": "Solar"
+    },
+    {
+      "id": "prismatic-ray",
+      "name": "Prismatic Ray",
+      "element": "Solar"
+    },
+    {
+      "id": "corona-burst",
+      "name": "Corona Burst",
+      "element": "Solar"
+    },
+    {
+      "id": "lunar-shard",
+      "name": "Lunar Shard",
+      "element": "Lunar"
+    },
+    {
+      "id": "silver-blades",
+      "name": "Silver Blades",
+      "element": "Lunar"
+    },
+    {
+      "id": "shadow-arrow",
+      "name": "Shadow Arrow",
+      "element": "Lunar"
+    },
+    {
+      "id": "umbral-surge",
+      "name": "Umbral Surge",
+      "element": "Lunar"
+    },
+    {
+      "id": "moon-bastion-spear",
+      "name": "Moon Bastion Spear",
+      "element": "Lunar"
+    },
+    {
+      "id": "eclipse-lance",
+      "name": "Eclipse Lance",
+      "element": "Lunar"
+    },
+    {
+      "id": "thread-of-dusk",
+      "name": "Thread of Dusk",
+      "element": "Lunar"
+    },
+    {
+      "id": "mirror-flurry",
+      "name": "Mirror Flurry",
+      "element": "Lunar"
+    },
+    {
+      "id": "aqua-dart",
+      "name": "Aqua Dart",
+      "element": "Tidal"
+    },
+    {
+      "id": "tidal-whip",
+      "name": "Tidal Whip",
+      "element": "Tidal"
+    },
+    {
+      "id": "tempest-shot",
+      "name": "Tempest Shot",
+      "element": "Tidal"
+    },
+    {
+      "id": "maelstrom-cleave",
+      "name": "Maelstrom Cleave",
+      "element": "Tidal"
+    },
+    {
+      "id": "leviathan-crush",
+      "name": "Leviathan Crush",
+      "element": "Tidal"
+    },
+    {
+      "id": "cyclone-javelin",
+      "name": "Cyclone Javelin",
+      "element": "Tidal"
+    },
+    {
+      "id": "reef-spire",
+      "name": "Reef Spire",
+      "element": "Tidal"
+    },
+    {
+      "id": "abyssal-verse",
+      "name": "Abyssal Verse",
+      "element": "Tidal"
+    },
+    {
+      "id": "thorn-dart",
+      "name": "Thorn Dart",
+      "element": "Verdant"
+    },
+    {
+      "id": "briar-sling",
+      "name": "Briar Sling",
+      "element": "Verdant"
+    },
+    {
+      "id": "spore-burst",
+      "name": "Spore Burst",
+      "element": "Verdant"
+    },
+    {
+      "id": "root-quake",
+      "name": "Root Quake",
+      "element": "Verdant"
+    },
+    {
+      "id": "gaia-breaker",
+      "name": "Gaia Breaker",
+      "element": "Verdant"
+    },
+    {
+      "id": "lattice-beam",
+      "name": "Lattice Beam",
+      "element": "Verdant"
+    },
+    {
+      "id": "regents-thorn",
+      "name": "Regent's Thorn",
+      "element": "Verdant"
+    },
+    {
+      "id": "sylvan-pulse",
+      "name": "Sylvan Pulse",
+      "element": "Verdant"
+    },
+    {
+      "id": "ember-spit",
+      "name": "Ember Spit",
+      "element": "Umbral"
+    },
+    {
+      "id": "char-fang",
+      "name": "Char Fang",
+      "element": "Umbral"
+    },
+    {
+      "id": "dusk-slash",
+      "name": "Dusk Slash",
+      "element": "Umbral"
+    },
+    {
+      "id": "abyss-edge",
+      "name": "Abyss Edge",
+      "element": "Umbral"
+    },
+    {
+      "id": "oblivion-scythe",
+      "name": "Oblivion Scythe",
+      "element": "Umbral"
+    },
+    {
+      "id": "rift-spiral",
+      "name": "Rift Spiral",
+      "element": "Umbral"
+    },
+    {
+      "id": "dread-banner",
+      "name": "Dread Banner",
+      "element": "Umbral"
+    },
+    {
+      "id": "veil-fold",
+      "name": "Veil Fold",
+      "element": "Umbral"
+    },
+    {
+      "id": "omni-convergence",
+      "name": "Omni Convergence",
+      "element": "Transcendent"
+    }
+  ],
+  "abilities": [
+    {
+      "id": "sun-kissed-warmth",
+      "name": "Sun-Kissed Warmth",
+      "effect": "Restores minor shields when attacking."
+    },
+    {
+      "id": "blazing-guard",
+      "name": "Blazing Guard",
+      "effect": "Blocks a portion of incoming damage with solar plating."
+    },
+    {
+      "id": "heliotropic-charge",
+      "name": "Heliotropic Charge",
+      "effect": "Gain speed when moving toward light-aligned units."
+    },
+    {
+      "id": "flarewall-bulwark",
+      "name": "Flarewall Bulwark",
+      "effect": "Creates a wall of flame that intercepts projectiles."
+    },
+    {
+      "id": "phoenix-aegis",
+      "name": "Phoenix Aegis",
+      "effect": "Revives with partial health once per combat."
+    },
+    {
+      "id": "solar-liturgy",
+      "name": "Solar Liturgy",
+      "effect": "Buffs nearby allies with radiant damage."
+    },
+    {
+      "id": "auric-edict",
+      "name": "Auric Edict",
+      "effect": "Stuns foes that strike the bearer."
+    },
+    {
+      "id": "radiant-command",
+      "name": "Radiant Command",
+      "effect": "Orders allied minions to focus fire with increased accuracy."
+    },
+    {
+      "id": "lightwell-oracle",
+      "name": "Lightwell Oracle",
+      "effect": "Reveals hidden units in a beam."
+    },
+    {
+      "id": "guiding-aperture",
+      "name": "Guiding Aperture",
+      "effect": "Redirects solar attacks toward marked targets."
+    },
+    {
+      "id": "coronal-breach",
+      "name": "Coronal Breach",
+      "effect": "Ignores shields on the next strike."
+    },
+    {
+      "id": "sun-ascension",
+      "name": "Sun Ascension",
+      "effect": "Temporarily rises above the arena, avoiding ground effects."
+    },
+    {
+      "id": "adaptive-flare",
+      "name": "Adaptive Flare",
+      "effect": "Copies the last elemental buff received."
+    },
+    {
+      "id": "crescent-scout",
+      "name": "Crescent Scout",
+      "effect": "Extends vision radius under moonlight."
+    },
+    {
+      "id": "crescent-step",
+      "name": "Crescent Step",
+      "effect": "Sidestep that leaves behind a decoy image."
+    },
+    {
+      "id": "eclipse-mark",
+      "name": "Eclipse Mark",
+      "effect": "Marks a target to take bonus shadow damage."
+    },
+    {
+      "id": "veil-of-night",
+      "name": "Veil of Night",
+      "effect": "Drops a veil that muffles footsteps and vision."
+    },
+    {
+      "id": "gravity-bind",
+      "name": "Gravity Bind",
+      "effect": "Slows enemies in a small radius."
+    },
+    {
+      "id": "tidal-silence",
+      "name": "Tidal Silence",
+      "effect": "Silences enemy spellcasting temporarily."
+    },
+    {
+      "id": "silver-mandate",
+      "name": "Silver Mandate",
+      "effect": "Reflects a portion of ranged damage."
+    },
+    {
+      "id": "lunar-blitz",
+      "name": "Lunar Blitz",
+      "effect": "Rapid dash that leaves crescent trails."
+    },
+    {
+      "id": "darkling-volley",
+      "name": "Darkling Volley",
+      "effect": "Fires a spread of shadow arrows."
+    },
+    {
+      "id": "quiet-dominion",
+      "name": "Quiet Dominion",
+      "effect": "Suppresses enemy aura effects."
+    },
+    {
+      "id": "dream-snare",
+      "name": "Dream Snare",
+      "effect": "Puts weakened targets to sleep."
+    },
+    {
+      "id": "mirage-bloom",
+      "name": "Mirage Bloom",
+      "effect": "Creates illusory clones that absorb hits."
+    },
+    {
+      "id": "lunar-gambit",
+      "name": "Lunar Gambit",
+      "effect": "Gains power when dodging attacks."
+    },
+    {
+      "id": "ripple-dash",
+      "name": "Ripple Dash",
+      "effect": "Short dash that leaves slowing water behind."
+    },
+    {
+      "id": "undertow-grapple",
+      "name": "Undertow Grapple",
+      "effect": "Pulls an enemy a short distance."
+    },
+    {
+      "id": "waveburst-rally",
+      "name": "Waveburst Rally",
+      "effect": "Boosts allied speed after dealing damage."
+    },
+    {
+      "id": "abyssal-anchor",
+      "name": "Abyssal Anchor",
+      "effect": "Roots enemies near a planted anchor."
+    },
+    {
+      "id": "foam-bastion",
+      "name": "Foam Bastion",
+      "effect": "Grants temporary shields that harden after time."
+    },
+    {
+      "id": "tidal-bulwark",
+      "name": "Tidal Bulwark",
+      "effect": "Reduces incoming ranged damage."
+    },
+    {
+      "id": "abyss-crown",
+      "name": "Abyss Crown",
+      "effect": "Empowers allies submerged in water effects."
+    },
+    {
+      "id": "current-reversal",
+      "name": "Current Reversal",
+      "effect": "Reflects projectiles back to senders."
+    },
+    {
+      "id": "typhoon-line",
+      "name": "Typhoon Line",
+      "effect": "Straight-line knockback gust."
+    },
+    {
+      "id": "tide-court",
+      "name": "Tide Court",
+      "effect": "Summons tidal spirits that slow foes."
+    },
+    {
+      "id": "brackish-decree",
+      "name": "Brackish Decree",
+      "effect": "Poisons enemies standing in water."
+    },
+    {
+      "id": "depth-echo",
+      "name": "Depth Echo",
+      "effect": "Echoes damage to nearby targets."
+    },
+    {
+      "id": "fathom-insight",
+      "name": "Fathom Insight",
+      "effect": "Highlights weak points after scans."
+    },
+    {
+      "id": "photosynthetic-bloom",
+      "name": "Photosynthetic Bloom",
+      "effect": "Regenerates health in sunlight."
+    },
+    {
+      "id": "vine-snare",
+      "name": "Vine Snare",
+      "effect": "Roots a target briefly."
+    },
+    {
+      "id": "canopy-guard",
+      "name": "Canopy Guard",
+      "effect": "Reduces aerial damage."
+    },
+    {
+      "id": "pollen-shield",
+      "name": "Pollen Shield",
+      "effect": "Creates spores that reduce enemy accuracy."
+    },
+    {
+      "id": "verdant-surge",
+      "name": "Verdant Surge",
+      "effect": "Overgrows terrain to buff allies."
+    },
+    {
+      "id": "earthshaker-cry",
+      "name": "Earthshaker Cry",
+      "effect": "Damages and stuns nearby foes."
+    },
+    {
+      "id": "ivy-rampage",
+      "name": "Ivy Rampage",
+      "effect": "Summons vines that lash multiple enemies."
+    },
+    {
+      "id": "bloom-lattice",
+      "name": "Bloom Lattice",
+      "effect": "Spreads supportive roots between allies."
+    },
+    {
+      "id": "habitat-rewrite",
+      "name": "Habitat Rewrite",
+      "effect": "Replaces terrain with healing groves."
+    },
+    {
+      "id": "crown-of-briars",
+      "name": "Crown of Briars",
+      "effect": "Reflects melee damage."
+    },
+    {
+      "id": "bulwark-blossom",
+      "name": "Bulwark Blossom",
+      "effect": "Spawns shielding flowers."
+    },
+    {
+      "id": "forests-voice",
+      "name": "Forest's Voice",
+      "effect": "Charms lesser beasts to assist."
+    },
+    {
+      "id": "green-mirage",
+      "name": "Green Mirage",
+      "effect": "Creates decoys that explode into healing spores."
+    },
+    {
+      "id": "smoke-drift",
+      "name": "Smoke Drift",
+      "effect": "Leaves a smoke trail that hides movement."
+    },
+    {
+      "id": "ember-step",
+      "name": "Ember Step",
+      "effect": "Short dash that scorches the ground."
+    },
+    {
+      "id": "shadow-feint",
+      "name": "Shadow Feint",
+      "effect": "Dodges and counters the next strike."
+    },
+    {
+      "id": "null-screen",
+      "name": "Null Screen",
+      "effect": "Blocks spell damage for a short time."
+    },
+    {
+      "id": "entropy-mark",
+      "name": "Entropy Mark",
+      "effect": "Causes targets to take increasing true damage."
+    },
+    {
+      "id": "ruinous-sweep",
+      "name": "Ruinous Sweep",
+      "effect": "Wide arc attack that strips buffs."
+    },
+    {
+      "id": "eventide-howl",
+      "name": "Eventide Howl",
+      "effect": "Fears nearby enemies."
+    },
+    {
+      "id": "rift-script",
+      "name": "Rift Script",
+      "effect": "Creates unstable rifts that detonate."
+    },
+    {
+      "id": "vacuole-bind",
+      "name": "Vacuole Bind",
+      "effect": "Traps enemies in a gravity pocket."
+    },
+    {
+      "id": "marshals-bulwark",
+      "name": "Marshal's Bulwark",
+      "effect": "Bolsters allied defenses."
+    },
+    {
+      "id": "night-rally",
+      "name": "Night Rally",
+      "effect": "Commands shadow minions to charge."
+    },
+    {
+      "id": "cinder-memory",
+      "name": "Cinder Memory",
+      "effect": "Stores damage taken and returns it."
+    },
+    {
+      "id": "quiet-return",
+      "name": "Quiet Return",
+      "effect": "Briefly enters the shadows to avoid targeting."
+    },
+    {
+      "id": "meta-weave",
+      "name": "Meta-Weave",
+      "effect": "Copies one ability from each consumed god."
+    },
+    {
+      "id": "timeline-braid",
+      "name": "Timeline Braid",
+      "effect": "Slows or hastens time in a small area."
+    },
+    {
+      "id": "concordant-pulse",
+      "name": "Concordant Pulse",
+      "effect": "Pulse that refreshes allied cooldowns."
+    }
+  ],
+  "lines": [
+    {
+      "id": "solar",
+      "name": "Solar Line",
+      "theme": "Sunfire dominion",
+      "tiers": [
+        {
+          "tier": 1,
+          "id": "sun-spark",
+          "name": "Sun Spark",
+          "attackTypeId": "radiant-beam",
+          "abilityIds": [
+            "sun-kissed-warmth"
+          ],
+          "stats": {
+            "range": 3,
+            "attackPower": 12,
+            "attackSpeed": 1.2
+          }
+        },
+        {
+          "tier": 2,
+          "id": "ember-squire",
+          "name": "Ember Squire",
+          "attackTypeId": "solar-edge",
+          "abilityIds": [
+            "blazing-guard"
+          ],
+          "stats": {
+            "range": 3.5,
+            "attackPower": 18,
+            "attackSpeed": 1.3
+          }
+        },
+        {
+          "tier": 3,
+          "id": "zenith-knight",
+          "name": "Zenith Knight",
+          "attackTypeId": "solar-barrage",
+          "abilityIds": [
+            "heliotropic-charge"
+          ],
+          "stats": {
+            "range": 4,
+            "attackPower": 26,
+            "attackSpeed": 1.4
+          }
+        },
+        {
+          "tier": 4,
+          "id": "dawn-warden",
+          "name": "Dawn Warden",
+          "attackTypeId": "coronal-lance",
+          "abilityIds": [
+            "flarewall-bulwark",
+            "phoenix-aegis"
+          ],
+          "stats": {
+            "range": 4.5,
+            "attackPower": 35,
+            "attackSpeed": 1.5
+          }
+        }
+      ],
+      "finalGods": [
+        {
+          "tier": 5,
+          "id": "auric-judge",
+          "name": "Auric Judge",
+          "archetype": "Bastion",
+          "attackTypeId": "stellar-hammer",
+          "abilityIds": [
+            "solar-liturgy",
+            "flarewall-bulwark",
+            "auric-edict"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 55,
+            "attackSpeed": 1.6
+          }
+        },
+        {
+          "tier": 5,
+          "id": "helion-admiral",
+          "name": "Helion Admiral",
+          "archetype": "Assault",
+          "attackTypeId": "dawn-fleet-barrage",
+          "abilityIds": [
+            "phoenix-aegis",
+            "solar-liturgy",
+            "radiant-command"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 60,
+            "attackSpeed": 1.75
+          }
+        },
+        {
+          "tier": 5,
+          "id": "solarii-oracle",
+          "name": "Solarii Oracle",
+          "archetype": "Control",
+          "attackTypeId": "prismatic-ray",
+          "abilityIds": [
+            "heliotropic-charge",
+            "lightwell-oracle",
+            "guiding-aperture"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 52,
+            "attackSpeed": 1.65
+          }
+        },
+        {
+          "tier": 5,
+          "id": "ember-paragon",
+          "name": "Ember Paragon",
+          "archetype": "Wildcard",
+          "attackTypeId": "corona-burst",
+          "abilityIds": [
+            "coronal-breach",
+            "sun-ascension",
+            "adaptive-flare"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 58,
+            "attackSpeed": 1.7
+          }
+        }
+      ],
+      "mergeRule": "Evolve sequential tiers then fuse Dawn Warden with a solar catalyst tuned to the desired archetype to select the god form."
+    },
+    {
+      "id": "lunar",
+      "name": "Lunar Line",
+      "theme": "Moonlit control",
+      "tiers": [
+        {
+          "tier": 1,
+          "id": "moon-sprout",
+          "name": "Moon Sprout",
+          "attackTypeId": "lunar-shard",
+          "abilityIds": [
+            "crescent-scout"
+          ],
+          "stats": {
+            "range": 3,
+            "attackPower": 12,
+            "attackSpeed": 1.2
+          }
+        },
+        {
+          "tier": 2,
+          "id": "silver-acolyte",
+          "name": "Silver Acolyte",
+          "attackTypeId": "silver-blades",
+          "abilityIds": [
+            "crescent-step"
+          ],
+          "stats": {
+            "range": 3.5,
+            "attackPower": 18,
+            "attackSpeed": 1.3
+          }
+        },
+        {
+          "tier": 3,
+          "id": "eclipse-ranger",
+          "name": "Eclipse Ranger",
+          "attackTypeId": "shadow-arrow",
+          "abilityIds": [
+            "eclipse-mark"
+          ],
+          "stats": {
+            "range": 4,
+            "attackPower": 26,
+            "attackSpeed": 1.4
+          }
+        },
+        {
+          "tier": 4,
+          "id": "night-herald",
+          "name": "Night Herald",
+          "attackTypeId": "umbral-surge",
+          "abilityIds": [
+            "veil-of-night",
+            "gravity-bind"
+          ],
+          "stats": {
+            "range": 4.5,
+            "attackPower": 35,
+            "attackSpeed": 1.5
+          }
+        }
+      ],
+      "finalGods": [
+        {
+          "tier": 5,
+          "id": "selene-matriarch",
+          "name": "Selene Matriarch",
+          "archetype": "Bastion",
+          "attackTypeId": "moon-bastion-spear",
+          "abilityIds": [
+            "veil-of-night",
+            "tidal-silence",
+            "silver-mandate"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 55,
+            "attackSpeed": 1.6
+          }
+        },
+        {
+          "tier": 5,
+          "id": "eclipse-emperor",
+          "name": "Eclipse Emperor",
+          "archetype": "Assault",
+          "attackTypeId": "eclipse-lance",
+          "abilityIds": [
+            "eclipse-mark",
+            "lunar-blitz",
+            "darkling-volley"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 60,
+            "attackSpeed": 1.75
+          }
+        },
+        {
+          "tier": 5,
+          "id": "noctis-weaver",
+          "name": "Noctis Weaver",
+          "archetype": "Control",
+          "attackTypeId": "thread-of-dusk",
+          "abilityIds": [
+            "gravity-bind",
+            "quiet-dominion",
+            "dream-snare"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 52,
+            "attackSpeed": 1.65
+          }
+        },
+        {
+          "tier": 5,
+          "id": "argent-trickster",
+          "name": "Argent Trickster",
+          "archetype": "Wildcard",
+          "attackTypeId": "mirror-flurry",
+          "abilityIds": [
+            "crescent-step",
+            "mirage-bloom",
+            "lunar-gambit"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 58,
+            "attackSpeed": 1.7
+          }
+        }
+      ],
+      "mergeRule": "Evolve to Night Herald, then merge with lunar archetype catalyst to choose the god form."
+    },
+    {
+      "id": "tidal",
+      "name": "Tidal Line",
+      "theme": "Oceanic dominance",
+      "tiers": [
+        {
+          "tier": 1,
+          "id": "tide-minnow",
+          "name": "Tide Minnow",
+          "attackTypeId": "aqua-dart",
+          "abilityIds": [
+            "ripple-dash"
+          ],
+          "stats": {
+            "range": 3,
+            "attackPower": 12,
+            "attackSpeed": 1.2
+          }
+        },
+        {
+          "tier": 2,
+          "id": "current-binder",
+          "name": "Current Binder",
+          "attackTypeId": "tidal-whip",
+          "abilityIds": [
+            "undertow-grapple"
+          ],
+          "stats": {
+            "range": 3.5,
+            "attackPower": 18,
+            "attackSpeed": 1.3
+          }
+        },
+        {
+          "tier": 3,
+          "id": "storm-corsair",
+          "name": "Storm Corsair",
+          "attackTypeId": "tempest-shot",
+          "abilityIds": [
+            "waveburst-rally"
+          ],
+          "stats": {
+            "range": 4,
+            "attackPower": 26,
+            "attackSpeed": 1.4
+          }
+        },
+        {
+          "tier": 4,
+          "id": "abyss-captain",
+          "name": "Abyss Captain",
+          "attackTypeId": "maelstrom-cleave",
+          "abilityIds": [
+            "abyssal-anchor",
+            "foam-bastion"
+          ],
+          "stats": {
+            "range": 4.5,
+            "attackPower": 35,
+            "attackSpeed": 1.5
+          }
+        }
+      ],
+      "finalGods": [
+        {
+          "tier": 5,
+          "id": "leviathan-sovereign",
+          "name": "Leviathan Sovereign",
+          "archetype": "Bastion",
+          "attackTypeId": "leviathan-crush",
+          "abilityIds": [
+            "foam-bastion",
+            "tidal-bulwark",
+            "abyss-crown"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 55,
+            "attackSpeed": 1.6
+          }
+        },
+        {
+          "tier": 5,
+          "id": "tempest-navigator",
+          "name": "Tempest Navigator",
+          "archetype": "Assault",
+          "attackTypeId": "cyclone-javelin",
+          "abilityIds": [
+            "waveburst-rally",
+            "current-reversal",
+            "typhoon-line"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 60,
+            "attackSpeed": 1.75
+          }
+        },
+        {
+          "tier": 5,
+          "id": "coral-judge",
+          "name": "Coral Judge",
+          "archetype": "Control",
+          "attackTypeId": "reef-spire",
+          "abilityIds": [
+            "undertow-grapple",
+            "tide-court",
+            "brackish-decree"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 52,
+            "attackSpeed": 1.65
+          }
+        },
+        {
+          "tier": 5,
+          "id": "brine-seer",
+          "name": "Brine Seer",
+          "archetype": "Wildcard",
+          "attackTypeId": "abyssal-verse",
+          "abilityIds": [
+            "ripple-dash",
+            "depth-echo",
+            "fathom-insight"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 58,
+            "attackSpeed": 1.7
+          }
+        }
+      ],
+      "mergeRule": "Promote Abyss Captain with a tidal catalyst keyed to the target archetype to gain a chosen god form."
+    },
+    {
+      "id": "verdant",
+      "name": "Verdant Line",
+      "theme": "Living growth",
+      "tiers": [
+        {
+          "tier": 1,
+          "id": "seedling-scout",
+          "name": "Seedling Scout",
+          "attackTypeId": "thorn-dart",
+          "abilityIds": [
+            "photosynthetic-bloom"
+          ],
+          "stats": {
+            "range": 3,
+            "attackPower": 12,
+            "attackSpeed": 1.2
+          }
+        },
+        {
+          "tier": 2,
+          "id": "grove-skirmisher",
+          "name": "Grove Skirmisher",
+          "attackTypeId": "briar-sling",
+          "abilityIds": [
+            "vine-snare"
+          ],
+          "stats": {
+            "range": 3.5,
+            "attackPower": 18,
+            "attackSpeed": 1.3
+          }
+        },
+        {
+          "tier": 3,
+          "id": "canopy-warden",
+          "name": "Canopy Warden",
+          "attackTypeId": "spore-burst",
+          "abilityIds": [
+            "canopy-guard"
+          ],
+          "stats": {
+            "range": 4,
+            "attackPower": 26,
+            "attackSpeed": 1.4
+          }
+        },
+        {
+          "tier": 4,
+          "id": "wildwood-shaper",
+          "name": "Wildwood Shaper",
+          "attackTypeId": "root-quake",
+          "abilityIds": [
+            "pollen-shield",
+            "verdant-surge"
+          ],
+          "stats": {
+            "range": 4.5,
+            "attackPower": 35,
+            "attackSpeed": 1.5
+          }
+        }
+      ],
+      "finalGods": [
+        {
+          "tier": 5,
+          "id": "primeval-titan",
+          "name": "Primeval Titan",
+          "archetype": "Assault",
+          "attackTypeId": "gaia-breaker",
+          "abilityIds": [
+            "verdant-surge",
+            "earthshaker-cry",
+            "ivy-rampage"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 60,
+            "attackSpeed": 1.75
+          }
+        },
+        {
+          "tier": 5,
+          "id": "bloom-architect",
+          "name": "Bloom Architect",
+          "archetype": "Control",
+          "attackTypeId": "lattice-beam",
+          "abilityIds": [
+            "pollen-shield",
+            "bloom-lattice",
+            "habitat-rewrite"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 52,
+            "attackSpeed": 1.65
+          }
+        },
+        {
+          "tier": 5,
+          "id": "thorn-regent",
+          "name": "Thorn Regent",
+          "archetype": "Bastion",
+          "attackTypeId": "regents-thorn",
+          "abilityIds": [
+            "vine-snare",
+            "crown-of-briars",
+            "bulwark-blossom"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 55,
+            "attackSpeed": 1.6
+          }
+        },
+        {
+          "tier": 5,
+          "id": "sylvan-whisperer",
+          "name": "Sylvan Whisperer",
+          "archetype": "Wildcard",
+          "attackTypeId": "sylvan-pulse",
+          "abilityIds": [
+            "photosynthetic-bloom",
+            "forests-voice",
+            "green-mirage"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 58,
+            "attackSpeed": 1.7
+          }
+        }
+      ],
+      "mergeRule": "Fuse Wildwood Shaper with an aligned verdant seed catalyst to branch into the desired god archetype."
+    },
+    {
+      "id": "umbral",
+      "name": "Umbral Line",
+      "theme": "Shadow dominion",
+      "tiers": [
+        {
+          "tier": 1,
+          "id": "ash-wisp",
+          "name": "Ash Wisp",
+          "attackTypeId": "ember-spit",
+          "abilityIds": [
+            "smoke-drift"
+          ],
+          "stats": {
+            "range": 3,
+            "attackPower": 12,
+            "attackSpeed": 1.2
+          }
+        },
+        {
+          "tier": 2,
+          "id": "cinder-stalker",
+          "name": "Cinder Stalker",
+          "attackTypeId": "char-fang",
+          "abilityIds": [
+            "ember-step"
+          ],
+          "stats": {
+            "range": 3.5,
+            "attackPower": 18,
+            "attackSpeed": 1.3
+          }
+        },
+        {
+          "tier": 3,
+          "id": "shadow-blade",
+          "name": "Shadow Blade",
+          "attackTypeId": "dusk-slash",
+          "abilityIds": [
+            "shadow-feint"
+          ],
+          "stats": {
+            "range": 4,
+            "attackPower": 26,
+            "attackSpeed": 1.4
+          }
+        },
+        {
+          "tier": 4,
+          "id": "void-templar",
+          "name": "Void Templar",
+          "attackTypeId": "abyss-edge",
+          "abilityIds": [
+            "null-screen",
+            "entropy-mark"
+          ],
+          "stats": {
+            "range": 4.5,
+            "attackPower": 35,
+            "attackSpeed": 1.5
+          }
+        }
+      ],
+      "finalGods": [
+        {
+          "tier": 5,
+          "id": "oblivion-tyrant",
+          "name": "Oblivion Tyrant",
+          "archetype": "Assault",
+          "attackTypeId": "oblivion-scythe",
+          "abilityIds": [
+            "entropy-mark",
+            "ruinous-sweep",
+            "eventide-howl"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 60,
+            "attackSpeed": 1.75
+          }
+        },
+        {
+          "tier": 5,
+          "id": "rift-arcanist",
+          "name": "Rift Arcanist",
+          "archetype": "Control",
+          "attackTypeId": "rift-spiral",
+          "abilityIds": [
+            "null-screen",
+            "rift-script",
+            "vacuole-bind"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 52,
+            "attackSpeed": 1.65
+          }
+        },
+        {
+          "tier": 5,
+          "id": "dread-marshal",
+          "name": "Dread Marshal",
+          "archetype": "Bastion",
+          "attackTypeId": "dread-banner",
+          "abilityIds": [
+            "shadow-feint",
+            "marshals-bulwark",
+            "night-rally"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 55,
+            "attackSpeed": 1.6
+          }
+        },
+        {
+          "tier": 5,
+          "id": "veil-reclaimer",
+          "name": "Veil Reclaimer",
+          "archetype": "Wildcard",
+          "attackTypeId": "veil-fold",
+          "abilityIds": [
+            "smoke-drift",
+            "cinder-memory",
+            "quiet-return"
+          ],
+          "stats": {
+            "range": 5.5,
+            "attackPower": 58,
+            "attackSpeed": 1.7
+          }
+        }
+      ],
+      "mergeRule": "Ascend Void Templar with a void catalyst tuned to archetype to attain the chosen god form."
+    }
+  ],
+  "enemyLines": [
+    {
+      "id": "hero-invaders",
+      "name": "Hero Invader Line",
+      "heartDamageOnExit": 1,
+      "behavior": "Path-walking heroes who never attack; reaching the exit costs one heart.",
+      "units": [
+        {
+          "id": "runeguard-page",
+          "name": "Runeguard Page",
+          "health": 120,
+          "defense": 5,
+          "speed": "steady"
+        },
+        {
+          "id": "crest-sellsword",
+          "name": "Crest Sellsword",
+          "health": 180,
+          "defense": 10,
+          "speed": "steady"
+        },
+        {
+          "id": "banner-champion",
+          "name": "Banner Champion",
+          "health": 250,
+          "defense": 18,
+          "speed": "steady"
+        },
+        {
+          "id": "sanctum-marshal",
+          "name": "Sanctum Marshal",
+          "health": 320,
+          "defense": 26,
+          "speed": "steady"
+        },
+        {
+          "id": "valiant-paragon",
+          "name": "Valiant Paragon",
+          "health": 400,
+          "defense": 34,
+          "speed": "steady"
+        }
+      ]
+    }
+  ],
+  "transcendence": {
+    "id": "transcendent-concord",
+    "name": "Transcendent Concord",
+    "requiresDistinctGodCount": 4,
+    "rule": "Merge any four distinct gods with a Transcendence Catalyst to create a single transcendent entity.",
+    "attackTypeId": "omni-convergence",
+    "abilityIds": [
+      "meta-weave",
+      "timeline-braid",
+      "concordant-pulse"
+    ],
+    "stats": {
+      "range": 6,
+      "attackPower": 70,
+      "attackSpeed": 1.85
+    }
+  },
+  "battlefield": {
+    "gridWidth": 12,
+    "gridHeight": 8,
+    "enemyPath": [
+      {
+        "x": 0,
+        "y": 3,
+        "isAttackWindow": true
+      },
+      {
+        "x": 1,
+        "y": 3
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "isAttackWindow": true
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "isAttackWindow": true
+      },
+      {
+        "x": 5,
+        "y": 3
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "isAttackWindow": true
+      },
+      {
+        "x": 7,
+        "y": 3
+      },
+      {
+        "x": 8,
+        "y": 3,
+        "isAttackWindow": true
+      },
+      {
+        "x": 9,
+        "y": 3
+      },
+      {
+        "x": 10,
+        "y": 3,
+        "isAttackWindow": true
+      },
+      {
+        "x": 11,
+        "y": 3,
+        "isEscape": true
+      }
+    ],
+    "buildableTiles": [
+      {
+        "x": 1,
+        "y": 2
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 2
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
+        "x": 6,
+        "y": 2
+      },
+      {
+        "x": 7,
+        "y": 1
+      },
+      {
+        "x": 8,
+        "y": 2
+      },
+      {
+        "x": 9,
+        "y": 1
+      },
+      {
+        "x": 10,
+        "y": 2
+      }
+    ]
+  }
+}
