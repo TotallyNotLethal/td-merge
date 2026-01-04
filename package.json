@@ -1,0 +1,12 @@
+{
+  "name": "td-merge",
+  "version": "1.0.0",
+  "description": "Tower defense merge prototype with tier data and playable GUI.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
